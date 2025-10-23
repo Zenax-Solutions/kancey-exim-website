@@ -422,12 +422,12 @@ const Index = () => {
                 backed by ethical sourcing and global excellence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/#contact">
+                <a href="#contact">
                   <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8">
                     Get in Touch
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                </Link>
+                </a>
                 <Link to="/company/responsible-sourcing">
                   <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-lg px-8">
                     Our Sourcing

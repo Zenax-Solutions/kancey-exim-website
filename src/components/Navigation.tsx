@@ -61,7 +61,7 @@ const Navigation = () => {
                   <ChevronDown className="h-4 w-4" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 bg-background/98 backdrop-blur-md z-[100]">
+              <DropdownMenuContent align="end" className="w-56 bg-background border-border z-[100]">
                 {productLinks.map((product, index) => (
                   <div key={product.name}>
                     <DropdownMenuItem asChild>
@@ -80,11 +80,11 @@ const Navigation = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/#contact">
+            <a href="/#contact">
               <Button variant="default" size="lg">
                 Contact Us
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -127,11 +127,11 @@ const Navigation = () => {
             </div>
             
             <div className="pt-4">
-              <Link to="/#contact" onClick={() => setIsOpen(false)}>
+              <a href="/#contact" onClick={() => setIsOpen(false)}>
                 <Button variant="default" className="w-full" size="lg">
                   Contact Us
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         )}
