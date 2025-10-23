@@ -7,11 +7,12 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Technology", href: "#technology" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/company/who-we-are" },
+    { name: "Products", href: "/#products" },
+    { name: "Sourcing", href: "/company/responsible-sourcing" },
+    { name: "Blog", href: "/resources/blog" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
