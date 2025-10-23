@@ -1,17 +1,107 @@
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe, TrendingUp, Award, Users, Calendar } from "lucide-react";
+import { ArrowRight, Globe, TrendingUp, Award, Users, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import heroGlobe from "@/assets/hero-globe.jpg";
+import heroTea from "@/assets/hero-tea-plantation.jpg";
+import heroShipping from "@/assets/hero-shipping.jpg";
 import warehouseOps from "@/assets/warehouse-operations.jpg";
 import professionalPortrait from "@/assets/professional-portrait.jpg";
 import spicesImg from "@/assets/spices-hero.jpg";
 import teaImg from "@/assets/tea-hero.jpg";
 import fruitsImg from "@/assets/fruits-hero.jpg";
+import coconutImg from "@/assets/coconut-hero.jpg";
+import apparelImg from "@/assets/apparel-hero.jpg";
+import tyresImg from "@/assets/tyres-hero.jpg";
+import technologyImg from "@/assets/technology-hero.jpg";
 
 const Index = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      image: heroGlobe,
+      title: "New way, New value",
+      subtitle: "Sustainable by",
+      description: "Connecting Sri Lanka's Heritage with Global Markets",
+    },
+    {
+      image: heroTea,
+      title: "Premium Quality",
+      subtitle: "Excellence in",
+      description: "Export Quality Products from Sri Lanka to the World",
+    },
+    {
+      image: heroShipping,
+      title: "Global Reach",
+      subtitle: "Trusted for",
+      description: "Serving 25+ Countries with Reliable Trade Solutions",
+    },
+  ];
+
+  // Auto-advance slides
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const allBusinessAreas = [
+    {
+      title: "Spices & Ceylon Cinnamon",
+      image: spicesImg,
+      link: "/products/spices",
+      description: "Premium Ceylon cinnamon, pepper, cloves, and turmeric",
+    },
+    {
+      title: "Ceylon Tea",
+      image: teaImg,
+      link: "/products/tea",
+      description: "World-renowned tea from Sri Lankan highlands",
+    },
+    {
+      title: "Fruits & Vegetables",
+      image: fruitsImg,
+      link: "/products/fruits-vegetables",
+      description: "Fresh tropical produce and farm vegetables",
+    },
+    {
+      title: "Coconut Products",
+      image: coconutImg,
+      link: "/products/coconut",
+      description: "From desiccated coconut to coir and activated carbon",
+    },
+    {
+      title: "Apparel & Textiles",
+      image: apparelImg,
+      link: "/products/apparel",
+      description: "Custom workwear, uniforms, and quality textiles",
+    },
+    {
+      title: "Industrial Tyres",
+      image: tyresImg,
+      link: "/products/industrial-tyres",
+      description: "Heavy-duty tyres for construction and agriculture",
+    },
+    {
+      title: "Technology Solutions",
+      image: technologyImg,
+      link: "/products/technology",
+      description: "Custom development and IT outsourcing services",
+    },
+  ];
+
   const features = [
     {
       icon: Globe,
@@ -32,27 +122,6 @@ const Index = () => {
       icon: Users,
       title: "100+ Partners",
       description: "Trusted by global businesses",
-    },
-  ];
-
-  const businessAreas = [
-    {
-      title: "Agriculture & Commodities",
-      image: spicesImg,
-      link: "/products/spices",
-      description: "Premium spices, tea, fruits and coconut products",
-    },
-    {
-      title: "Apparel & Textiles",
-      image: teaImg,
-      link: "/products/apparel",
-      description: "Custom workwear, uniforms, and quality textiles",
-    },
-    {
-      title: "Industrial Solutions",
-      image: fruitsImg,
-      link: "/products/industrial-tyres",
-      description: "Heavy-duty tyres and rubber products",
     },
   ];
 
@@ -79,34 +148,75 @@ const Index = () => {
       <Navigation />
       
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0">
-            <img 
-              src={heroGlobe} 
-              alt="Global Trade"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent"></div>
-          </div>
+        {/* Hero Section with Auto-Sliding Images */}
+        <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
+          {/* Slides */}
+          {heroSlides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <img 
+                src={slide.image} 
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent"></div>
+            </div>
+          ))}
           
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-2xl animate-fade-in">
-              <p className="text-accent font-semibold mb-4 text-lg">Sustainable by</p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-secondary-foreground">
-                New way, New value
+          {/* Content */}
+          <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
+            <div className="max-w-2xl">
+              <p className="text-accent font-semibold mb-4 text-lg animate-fade-in">
+                {heroSlides[currentSlide].subtitle}
+              </p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-secondary-foreground animate-slide-up">
+                {heroSlides[currentSlide].title}
               </h1>
-              <p className="text-xl md:text-2xl text-secondary-foreground/90 mb-8 leading-relaxed">
-                Connecting Sri Lanka's Heritage with Global Markets
+              <p className="text-xl md:text-2xl text-secondary-foreground/90 mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: "100ms" }}>
+                {heroSlides[currentSlide].description}
               </p>
               <Link to="/company/who-we-are">
-                <Button size="lg" className="group text-lg px-8">
+                <Button size="lg" className="group text-lg px-8 animate-fade-in" style={{ animationDelay: "200ms" }}>
                   Discover Our Story
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
           </div>
+
+          {/* Slide Indicators */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-12 h-1 rounded-full transition-all ${
+                  index === currentSlide ? "bg-primary w-16" : "bg-white/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-6 w-6 text-white" />
+          </button>
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-6 w-6 text-white" />
+          </button>
         </section>
 
         {/* Tagline Section */}
@@ -125,7 +235,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Business Areas Grid */}
+        {/* Business Areas Carousel */}
         <section className="py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -133,30 +243,44 @@ const Index = () => {
               <p className="text-lg text-muted-foreground">Comprehensive export solutions across multiple industries</p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {businessAreas.map((area, index) => (
-                <Link key={index} to={area.link}>
-                  <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
-                    <div className="h-56 overflow-hidden">
-                      <img 
-                        src={area.image} 
-                        alt={area.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                        {area.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-4">{area.description}</p>
-                      <div className="flex items-center text-primary font-medium">
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
+            <div className="max-w-7xl mx-auto">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-4">
+                  {allBusinessAreas.map((area, index) => (
+                    <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                      <Link to={area.link}>
+                        <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
+                          <div className="h-56 overflow-hidden">
+                            <img 
+                              src={area.image} 
+                              alt={area.title}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                          </div>
+                          <CardContent className="p-6">
+                            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                              {area.title}
+                            </h3>
+                            <p className="text-muted-foreground mb-4">{area.description}</p>
+                            <div className="flex items-center text-primary font-medium">
+                              Learn More
+                              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex -left-12" />
+                <CarouselNext className="hidden md:flex -right-12" />
+              </Carousel>
             </div>
           </div>
         </section>
