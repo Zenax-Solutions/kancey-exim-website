@@ -1,48 +1,95 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import logo from "@/assets/logo.jpg";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const productLinks = [
+    { name: "Spices", href: "/products/spices" },
+    { name: "Tea & Coffee", href: "/products/tea" },
+    { name: "Fruits & Vegetables", href: "/products/fruits-vegetables" },
+    { name: "Coconut Products", href: "/products/coconut" },
+    { name: "Apparel & Textiles", href: "/products/apparel" },
+    { name: "Industrial Tyres", href: "/products/industrial-tyres" },
+    { name: "Technology Solutions", href: "/products/technology" },
+  ];
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/company/who-we-are" },
-    { name: "Products", href: "/#products" },
     { name: "Sourcing", href: "/company/responsible-sourcing" },
     { name: "Blog", href: "/resources/blog" },
-    { name: "Contact", href: "/#contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/98 backdrop-blur-md border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <img src={logo} alt="KANCEY EXIM Logo" className="h-12 w-auto" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <Button variant="default" size="lg">
-              Get Started
-            </Button>
+            
+            {/* Products Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors font-medium outline-none">
+                  Products
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 bg-background/98 backdrop-blur-md z-[100]">
+                {productLinks.map((product, index) => (
+                  <div key={product.name}>
+                    <DropdownMenuItem asChild>
+                      <Link 
+                        to={product.href}
+                        className="cursor-pointer"
+                      >
+                        {product.name}
+                      </Link>
+                    </DropdownMenuItem>
+                    {index < productLinks.length - 1 && index === 3 && (
+                      <DropdownMenuSeparator />
+                    )}
+                  </div>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Link to="/#contact">
+              <Button variant="default" size="lg">
+                Contact Us
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2 hover:bg-muted rounded-md transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -52,20 +99,40 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-4 animate-fade-in">
+          <div className="md:hidden py-4 space-y-2 animate-fade-in border-t border-border">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                className="block py-2 text-foreground hover:text-primary transition-colors font-medium"
+                to={link.href}
+                className="block py-3 px-4 text-foreground hover:bg-muted rounded-md hover:text-primary transition-all font-medium"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <Button variant="default" className="w-full" size="lg">
-              Get Started
-            </Button>
+            
+            {/* Mobile Products Section */}
+            <div className="pt-2 pb-3 px-4 space-y-2">
+              <div className="text-sm font-semibold text-muted-foreground mb-3">Products</div>
+              {productLinks.map((product) => (
+                <Link
+                  key={product.name}
+                  to={product.href}
+                  className="block py-2 pl-4 text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {product.name}
+                </Link>
+              ))}
+            </div>
+            
+            <div className="pt-4">
+              <Link to="/#contact" onClick={() => setIsOpen(false)}>
+                <Button variant="default" className="w-full" size="lg">
+                  Contact Us
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

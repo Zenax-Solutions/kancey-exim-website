@@ -1,27 +1,27 @@
 import { Facebook, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   const footerLinks = {
     Products: [
-      "Spices & Tea",
-      "Fruits & Vegetables",
-      "Coconut Products",
-      "Apparel & Textiles",
-      "Industrial Tyres",
+      { name: "Spices & Tea", href: "/products/spices" },
+      { name: "Fruits & Vegetables", href: "/products/fruits-vegetables" },
+      { name: "Coconut Products", href: "/products/coconut" },
+      { name: "Apparel & Textiles", href: "/products/apparel" },
+      { name: "Industrial Tyres", href: "/products/industrial-tyres" },
     ],
     Company: [
-      "About Us",
-      "Our Values",
-      "Responsible Sourcing",
-      "Technology Solutions",
-      "Contact",
+      { name: "About Us", href: "/company/who-we-are" },
+      { name: "Our Values", href: "/company/who-we-are#values" },
+      { name: "Responsible Sourcing", href: "/company/responsible-sourcing" },
+      { name: "Technology Solutions", href: "/products/technology" },
+      { name: "Contact", href: "/#contact" },
     ],
     Resources: [
-      "Blog & News",
-      "Case Studies",
-      "Quality Standards",
-      "Shipping Information",
+      { name: "Blog & News", href: "/resources/blog" },
+      { name: "Quality Standards", href: "/company/who-we-are" },
+      { name: "Export Information", href: "/company/responsible-sourcing" },
     ],
   };
 
@@ -64,12 +64,12 @@ const Footer = () => {
               <ul className="space-y-3">
                 {links.map((link, index) => (
                   <li key={index}>
-                    <a 
-                      href="#" 
+                    <Link 
+                      to={link.href} 
                       className="text-sm opacity-80 hover:opacity-100 hover:text-primary transition-all"
                     >
-                      {link}
-                    </a>
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
