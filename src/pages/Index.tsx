@@ -235,7 +235,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Business Areas Carousel */}
+        {/* Business Areas Grid */}
         <section className="py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -243,44 +243,30 @@ const Index = () => {
               <p className="text-lg text-muted-foreground">Comprehensive export solutions across multiple industries</p>
             </div>
             
-            <div className="max-w-7xl mx-auto">
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                }}
-                className="w-full"
-              >
-                <CarouselContent className="-ml-4">
-                  {allBusinessAreas.map((area, index) => (
-                    <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                      <Link to={area.link}>
-                        <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
-                          <div className="h-56 overflow-hidden">
-                            <img 
-                              src={area.image} 
-                              alt={area.title}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                          </div>
-                          <CardContent className="p-6">
-                            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                              {area.title}
-                            </h3>
-                            <p className="text-muted-foreground mb-4">{area.description}</p>
-                            <div className="flex items-center text-primary font-medium">
-                              Learn More
-                              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="hidden md:flex -left-12" />
-                <CarouselNext className="hidden md:flex -right-12" />
-              </Carousel>
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {allBusinessAreas.map((area, index) => (
+                <Link key={index} to={area.link}>
+                  <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
+                    <div className="h-56 overflow-hidden">
+                      <img 
+                        src={area.image} 
+                        alt={area.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                        {area.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-4">{area.description}</p>
+                      <div className="flex items-center text-primary font-medium">
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
