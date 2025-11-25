@@ -337,35 +337,26 @@ const Index = () => {
         {/* Leadership Section */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-              <div>
-                <p className="text-primary font-semibold mb-4">Leadership</p>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  A Message From Our Managing Director
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  "At KANCEY EXIM, we believe in creating value beyond transactions. Our mission is to 
-                  empower local communities while delivering exceptional quality to our global partners. 
-                  Every product tells a story of resilience, craftsmanship, and Sri Lanka's rich heritage."
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  "We are committed to sustainable growth, ethical practices, and building lasting 
-                  partnerships that benefit all stakeholders in our value chain."
-                </p>
-                <Link to="/company/who-we-are">
-                  <Button variant="outline" size="lg" className="group">
-                    Our Values
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </div>
-              <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                <img 
-                  src={professionalPortrait}
-                  alt="Managing Director"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-primary font-semibold mb-4">Leadership</p>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                A Message From Our Managing Director
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                "At KANCEY EXIM, we believe in creating value beyond transactions. Our mission is to 
+                empower local communities while delivering exceptional quality to our global partners. 
+                Every product tells a story of resilience, craftsmanship, and Sri Lanka's rich heritage."
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                "We are committed to sustainable growth, ethical practices, and building lasting 
+                partnerships that benefit all stakeholders in our value chain."
+              </p>
+              <Link to="/company/who-we-are">
+                <Button variant="outline" size="lg" className="group">
+                  Our Values
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
