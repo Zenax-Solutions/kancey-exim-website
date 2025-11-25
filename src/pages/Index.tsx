@@ -12,9 +12,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import heroGlobe from "@/assets/hero-globe.jpg";
-import heroTea from "@/assets/hero-tea-plantation.jpg";
-import heroShipping from "@/assets/hero-shipping.jpg";
+import heroGlobalReach from "@/assets/hero-global-reach.jpg";
+import heroCinnamon from "@/assets/hero-cinnamon.jpg";
+import heroFinishedGoods from "@/assets/hero-finished-goods.jpg";
+import heroCommodities from "@/assets/hero-commodities.jpg";
 import warehouseOps from "@/assets/warehouse-operations.jpg";
 import professionalPortrait from "@/assets/professional-portrait.jpg";
 import spicesImg from "@/assets/spices-hero.jpg";
@@ -30,22 +31,28 @@ const Index = () => {
 
   const heroSlides = [
     {
-      image: heroGlobe,
-      title: "New way, New value",
-      subtitle: "Sustainable by",
-      description: "Connecting Sri Lanka's Heritage with Global Markets",
+      image: heroGlobalReach,
+      title: "Trusted for Global Reach",
+      subtitle: "Markets Without Borders",
+      description: "Connecting the Finest Products to Global Markets",
     },
     {
-      image: heroTea,
-      title: "Premium Quality",
-      subtitle: "Excellence in",
-      description: "Export Quality Products from Sri Lanka to the World",
+      image: heroCinnamon,
+      title: "Purest Cinnamon. Globally Delivered",
+      subtitle: "Premium Ceylon Spices",
+      description: "Direct from Sri Lanka's finest plantations to your doorstep",
     },
     {
-      image: heroShipping,
-      title: "Global Reach",
-      subtitle: "Trusted for",
-      description: "Serving 25+ Countries with Reliable Trade Solutions",
+      image: heroCommodities,
+      title: "High-Value Commodities",
+      subtitle: "Quality You Can Trust",
+      description: "Premium spices, tea, and agricultural products",
+    },
+    {
+      image: heroFinishedGoods,
+      title: "Finest Finished Goods",
+      subtitle: "Your Partner for Apparel Manufacturing",
+      description: "Exceptional craftsmanship meets global standards",
     },
   ];
 
@@ -59,7 +66,7 @@ const Index = () => {
 
   const allBusinessAreas = [
     {
-      title: "Spices & Ceylon Cinnamon",
+      title: "Spices",
       image: spicesImg,
       link: "/products/spices",
       description: "Premium Ceylon cinnamon, pepper, cloves, and turmeric",
@@ -89,10 +96,10 @@ const Index = () => {
       description: "Custom workwear, uniforms, and quality textiles",
     },
     {
-      title: "Industrial Tyres",
+      title: "Rubber Products",
       image: tyresImg,
       link: "/products/industrial-tyres",
-      description: "Heavy-duty tyres for construction and agriculture",
+      description: "Heavy-duty tyres and rubber products for industrial use",
     },
     {
       title: "Technology Solutions",
@@ -219,17 +226,18 @@ const Index = () => {
           </button>
         </section>
 
-        {/* Tagline Section */}
+        {/* Markets Section */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Bridging Sri Lanka's Finest Products with Global Markets
+                Markets
               </h2>
+              <p className="text-xl font-semibold mb-4 text-primary">
+                Connecting the Finest Products to Global Markets
+              </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                From premium spices and tea to industrial solutions and digital services, 
-                KANCEY EXIM delivers excellence across diverse categories. We don't just export goods; 
-                we export Sri Lanka's spirit, ensuring every delivery carries both quality and meaning.
+                From premium spices and tea to industrial solutions and digital services, KANCEY EXIM delivers excellence across diverse categories. We don't just export goods — we deliver quality, trust, and meaningful connections with every shipment.
               </p>
             </div>
           </div>

@@ -5,11 +5,12 @@ import logo from "@/assets/logo.jpg";
 const Footer = () => {
   const footerLinks = {
     Products: [
-      { name: "Spices & Tea", href: "/products/spices" },
+      { name: "Spices", href: "/products/spices" },
+      { name: "Ceylon Tea", href: "/products/tea" },
       { name: "Fruits & Vegetables", href: "/products/fruits-vegetables" },
       { name: "Coconut Products", href: "/products/coconut" },
-      { name: "Apparel & Textiles", href: "/products/apparel" },
-      { name: "Industrial Tyres", href: "/products/industrial-tyres" },
+      { name: "Apparel Manufacturing", href: "/products/apparel" },
+      { name: "Rubber Products", href: "/products/industrial-tyres" },
     ],
     Company: [
       { name: "About Us", href: "/company/who-we-are" },
@@ -43,6 +44,29 @@ const Footer = () => {
               Bridging Sri Lanka's finest products with global markets. 
               Creating opportunities and delivering excellence since 2025.
             </p>
+            
+            {/* Working Hours */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-sm">Working Hours</h4>
+              <p className="text-sm opacity-80">Monday - Friday: 08:00 AM to 05:00 PM</p>
+              <p className="text-sm opacity-80">Saturday / Sunday / Holidays: Closed</p>
+            </div>
+
+            {/* Corporate Office */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-sm">Corporate Office</h4>
+              <p className="text-sm opacity-80">117 Biyagama Rd, Kelaniya</p>
+            </div>
+
+            {/* Contact */}
+            <div className="space-y-2">
+              <h4 className="font-semibold text-sm">Contact</h4>
+              <p className="text-sm opacity-80">(+94) (112) 913716</p>
+              <p className="text-sm opacity-80">(+94) (112) 913740</p>
+              <p className="text-sm opacity-80">(+94) (112) 910321</p>
+              <p className="text-sm opacity-80">contact@tantri.com</p>
+            </div>
+
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a

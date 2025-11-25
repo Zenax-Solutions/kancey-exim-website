@@ -17,11 +17,11 @@ const Navigation = () => {
 
   const productLinks = [
     { name: "Spices", href: "/products/spices" },
-    { name: "Tea & Coffee", href: "/products/tea" },
+    { name: "Ceylon Tea", href: "/products/tea" },
     { name: "Fruits & Vegetables", href: "/products/fruits-vegetables" },
     { name: "Coconut Products", href: "/products/coconut" },
-    { name: "Apparel & Textiles", href: "/products/apparel" },
-    { name: "Industrial Tyres", href: "/products/industrial-tyres" },
+    { name: "Apparel Manufacturing", href: "/products/apparel" },
+    { name: "Rubber Products", href: "/products/industrial-tyres" },
     { name: "Technology Solutions", href: "/products/technology" },
   ];
 
